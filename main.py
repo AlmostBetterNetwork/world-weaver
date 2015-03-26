@@ -10,11 +10,11 @@ def index():
     return 'Welcome'
 
 
-db.setup()
-
-@app.teardown_appcontext
-def teardown(exception):
-    db.teardown()
-
 if __name__ == '__main__':
+    db.setup()
+
+    @app.teardown_appcontext
+    def teardown(exception):
+        db.teardown()
+
     app.run()
